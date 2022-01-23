@@ -1,25 +1,93 @@
 <template>
     <div class="photo">
-        <div class="photo-column" v-for="item, index in 3" :key="index">
-            <div class="photo-contents" v-for="_item, index in 2" :key="index">
-                <div class="photo-item">
-                    <div class="photo-card">
+        <!-- <div class="photo-card" v-for="photo, index in photos" :key="index">
+            <img :src="photo.urls.small" class="photo-card-img">
+            <div class="photo-text">
+                <h5>{{photo.user.first_name}} {{photo.user.last_name}}</h5>
+                <p>{{photo.user.location}}</p>
+            </div> -->
+
+            <div class="photo-column" v-for="i,index in 3" :key="index">
+                <div class="photo-contents" v-for="photo, index in fooPhotos.photo" :key="index">
+                    <div class="photo-item">
+                        <img :src="photo.urls.small" class="photo-card-img">
                         <div class="photo-text">
-                            <h5></h5>
-                            <p></p>
+                            <h5>{{photo.user.first_name}} {{photo.user.last_name}}</h5>
+                            <p>{{photo.user.location}}</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
 </template>
 <script>
 export default {
-    name: 'photo'
+    name: 'Photo',
+    props: {photos: Array},
+    computed:{
+        fooPhotos(){
+            const Photos= {
+                photo1: [],
+                photo2:[],
+                photo3: []
+            };
+
+            this.photos.forEach(photo => {
+                if (Photos.photo1.length <= 2){
+                    Photos.photo1.push(photo)
+                }
+                else if(Photos.photo2.length <= 2){
+                    Photos.photo2.push(photo)
+                }
+                else {
+                    Photos.photo3.push(photo)
+                }
+            })
+
+            return Photos
+        }
+    }
 }
 </script>
 <style lang="scss">
+    .photo {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .photo-card {
+        position: relative;
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+    // .photo {
+    //     display: grid;
+    //     grid-template-columns: repeat(12, auto);
+    //     grid-gap: 12px;
+    // }
+
+    // .photo-card {
+    //     grid-column: span 4;
+    //     position: relative;
+    // }
+
+    // .photo-card-img{
+    //     opacity: 0.75;
+    // }
+
+    // .photo-text{
+    //     bottom: 5%;
+    //     left: 10%;
+    //     position: absolute;
+    //     color: white;
+    // }
+
+
     .photo{
         display: flex;
         flex-wrap: wrap;
@@ -99,10 +167,5 @@ export default {
                 }
             }
         }
-    }
-            
-    @keyframes photoAnimate {
-        0%{ background-position: -283px 0; }
-        100%{ background-position: 283px 0; }
     }
 </style>

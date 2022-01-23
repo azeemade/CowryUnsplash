@@ -1,14 +1,14 @@
 <template>
-    <div>
-        <Placeholder />
-    </div>
+    <Photo v-if="photos.length != 0" :photos="photos"/>
+    <Placeholder v-else />
 </template>
 <script>
 import Placeholder from "../components/Placeholder.vue";
-import PhotoService from "../services/photo/service";
+import PhotoService from "../services/photo.service";
+import Photo from "../components/Photo.vue";
 export default {
     name: "Index",
-    components: { Placeholder },
+    components: { Placeholder, Photo },
     data(){
         return{
             photos: []
@@ -17,7 +17,7 @@ export default {
     beforeMount(){
         PhotoService.listPhotos()
         .then(response => {
-            this.photos = response.data
+            this.photos = response.data.results
         })
     }
 }

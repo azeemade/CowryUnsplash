@@ -1,5 +1,5 @@
 import axios from 'axios'
-const API_URL = 'https://api.unsplash.com/search/photos?page=1&query=Africa';
+const API_URL = 'https://api.unsplash.com/search/photos?page=1&per_page=8&order_by=latest&query=Africa';
 const AUTHORIZATION = {Authorization: 'Client-ID V4YYrdbekd79P8Fl1qKBitk00nVHQtwd_VM09ufQ41g'}
 
 class PhotoService {

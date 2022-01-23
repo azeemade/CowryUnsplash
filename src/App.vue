@@ -34,5 +34,6 @@ export default{
     position: absolute;
     width: 100%;
     top: 70%;
+    padding: 20px 160px;
   }
 </style>
