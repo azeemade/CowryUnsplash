@@ -10,6 +10,7 @@ const routes = [
   {
     path: "/search",
     name: "Search",
+    props: route => ({ query: route.query.search}),
     component: () =>
       import("../views/Search.vue"),
   }

@@ -17,9 +17,9 @@ export default {
 </script>
 <style lang="scss">
     .placeholder{
-        // display: flex;
-        // flex-wrap: wrap;
-        // padding: 20px 160px;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px 160px;
 
         &-column{
             flex: 25%;

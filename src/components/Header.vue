@@ -13,6 +13,6 @@ export default {
 <style>
     .header-items{
         background-color: rgb(221 226 233);
-        padding: 60px 120px;
+        padding: 100px 120px;
     }
 </style>

@@ -1,6 +1,6 @@
 <template>
-    <Photo v-if="photos.length != 0" :photos="photos"/>
-    <Placeholder v-else />
+    <Placeholder v-if="photos.length == 0" />
+    <Photo v-else :photos="photos"/>
 </template>
 <script>
 import Placeholder from "../components/Placeholder.vue";
